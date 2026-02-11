@@ -1,0 +1,53 @@
+/* General page */
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("./assets/SF-Pro-Text-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+body{
+  background-color: #F6F6F8;
+}
+body,
+h1,
+div,
+span,
+button {
+  font-family: "SF Pro Text", sans-serif;
+}
+
+.container {
+  margin: 50px auto;
+  width: 934px;
+  padding: 8px 16px;
+}
+
+.innerWrap {
+  width: 425px;
+}
+
+.addPrdWrap {
+  text-align: right;
+}
+
+.titleWrap {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 30px 40px;
+  color: #202223;
+}
+
+
+.subTitle>div {
+  width: 215px;
+  display: inline-block;
+  margin-left: 75px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000E5;
+}
+
+.subTitle>div.discountTxt {
+  margin-left: 10px;
+  width: auto;
+}

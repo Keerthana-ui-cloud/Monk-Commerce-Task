@@ -1,0 +1,169 @@
+
+
+/* Product Card */
+.product-card {
+  padding: 16px;
+  /* margin-bottom: 12px; */
+  position: relative;
+  display: flex;
+}
+.variant-item{
+  position: relative;
+}
+.product-card::before ,
+.variant-item::before{
+  content: "";
+  display: block;
+  position: absolute;
+  left: -5px;
+  top: 26px;
+  width: 8px;
+  height: 14px;
+  background: url(/src/assets/dragImg.png);
+}
+.variant-item::before{
+top: 8px;
+left: -15px;
+}
+.variantsInput,.variantPrice,.variantDis{
+  width: 157px;
+  padding: 0 20px;
+  border-radius: 30px;
+  height: 31px;
+  color: #000000CC;
+  border: 1px solid #000000CC;
+  box-shadow: 0px 2px 4px 0px #0000001A;
+
+}
+.variantPrice{
+  width: 69px;
+}
+.variantDis{
+  width: 89px;
+  padding-right: 20px;
+}
+/* Product Header */
+.product-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-header :is(span, input, button, div) {
+  color: #000000CC;
+  font-size: 14px;
+}
+
+.product-header img {
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.product-header input {
+  background: url(/src/assets/edit.png);
+  background-repeat: no-repeat;
+  background-position: 96%;
+  max-width: 215px;
+  height: 31px;
+  border: 1px solid #00000012;
+  box-shadow: 0px 2px 4px 0px #0000001A;
+  padding: 0 30px 0 20px;
+
+}
+
+.closeBtn.product-title-empty{
+  display: none;
+}
+
+.product-title {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Drag handle */
+.drag-handle {
+  cursor: grab;
+  color: #9CA3AF;
+  font-size: 18px;
+}
+
+/* Remove button */
+.remove-btn {
+  color: #EF4444;
+  cursor: pointer;
+}
+
+/* Variant */
+.variant {
+  padding-left: 32px;
+  margin-top: 8px;
+  color: #374151;
+  font-size: 14px;
+}
+
+.variant-toggle {
+  font-size: 13px;
+  color: #008060;
+  cursor: pointer;
+}
+
+/* Discount box */
+.discount-box {
+  display: flex;
+  gap: 8px;
+  margin-left: 15px;
+}
+
+.discount-box select,
+.discount-box input {
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+.discount-box input{
+  width: 69px;
+}
+/* Buttons */
+.discountBtn {
+  width: 141px;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background-color: #008060;
+  color: #FFFFFF;
+}
+
+button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Add Product Button */
+.add-product-btn {
+  background: transparent;
+  color: #008060;
+  width: 193px;
+  height: 48px;
+  border: 2px solid;
+  border-radius: 4px;
+}
+
+.addBtn {
+  background: #008060;
+  color: #FFFFFF;
+  border: 1px solid;
+  margin-right: 2%;
+}
+
+.cancelBtn {
+  background: transparent;
+  color: #00000066;
+  border: 1px solid;
+
+}
