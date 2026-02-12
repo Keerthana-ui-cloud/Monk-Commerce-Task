@@ -256,6 +256,7 @@ button.variantDrop::after {
 }
 .variant-list button.closeBtn {
     position: unset;
+  width:25px
 }
 
 /* custom scroll css */
