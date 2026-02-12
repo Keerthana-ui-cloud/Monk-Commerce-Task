@@ -10,13 +10,13 @@
 .variant-item{
   position: relative;
 }
-.product-card::before ,
+.product-header::before ,
 .variant-item::before{
   content: "";
   display: block;
   position: absolute;
-  left: -5px;
-  top: 26px;
+  left: 10px;
+  top: 24px;
   width: 8px;
   height: 14px;
   background: url(/src/assets/dragImg.png);
@@ -37,7 +37,7 @@ left: -15px;
 }
 .variantPrice{
   width: 69px;
-}
+}product-card
 .variantDis{
   width: 92px;
   padding-right: 20px;
@@ -52,6 +52,7 @@ left: -15px;
 .product-header :is(span, input, button, div) {
   color: #000000CC;
   font-size: 14px;
+  padding-left: 16px;
 }
 
 .product-header img {
