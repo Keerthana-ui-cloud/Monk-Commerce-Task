@@ -10,7 +10,7 @@
 .variant-item{
   position: relative;
 }
-.product-header::before ,
+.product-header span::before ,
 .variant-item::before{
   content: "";
   display: block;
