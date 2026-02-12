@@ -2,22 +2,59 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import ProductItem from "./ProductItem";
 
 export default function ProductList({ products = [], setProducts, onEdit }) {
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
-    const items = Array.from(products);
-    const [moved] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, moved);
-    setProducts(items);
-  };
+const onDragEnd = (result) => {
+  const { source, destination, type } = result;
+
+  if (!destination) return;
+
+  // ------------------------
+  // PRODUCT REORDER
+  // ------------------------
+  if (type === "PRODUCT") {
+    const reordered = Array.from(products);
+    const [moved] = reordered.splice(source.index, 1);
+    reordered.splice(destination.index, 0, moved);
+    setProducts(reordered);
+    return;
+  }
+
+  // ------------------------
+  // VARIANT REORDER
+  // ------------------------
+  if (type.startsWith("VARIANT")) {
+    const productId = source.droppableId.split("-")[1];
+
+    const productIndex = products.findIndex(
+      (p) => String(p.id) === productId
+    );
+
+    if (productIndex === -1) return;
+
+    const product = products[productIndex];
+    const newVariants = Array.from(product.variants);
+
+    const [movedVariant] = newVariants.splice(source.index, 1);
+    newVariants.splice(destination.index, 0, movedVariant);
+
+    const newProducts = [...products];
+    newProducts[productIndex] = {
+      ...product,
+      variants: newVariants,
+    };
+
+    setProducts(newProducts);
+  }
+};
+
 
   return (
     <>
-    <div className="subTitle">
-      <div className="productTitle">Product</div>
-      <div className="discountTxt">Discount</div>
-    </div>
+      <div className="subTitle">
+        <div className="productTitle">Product</div>
+        <div className="discountTxt">Discount</div>
+      </div>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="products">
+        <Droppable droppableId="products" type="PRODUCT">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {products.map((product, index) => (
@@ -32,8 +69,11 @@ export default function ProductList({ products = [], setProducts, onEdit }) {
                         index={index}
                         product={product}
                         dragHandleProps={provided.dragHandleProps}
-                        onRemove={() =>
-                          setProducts(products.filter((_, i) => i !== index))
+                        canRemoveProduct={products.length > 1}
+                        onRemove={
+                          products.length > 1
+                            ? () => setProducts(products.filter((_, i) => i !== index))
+                            : null
                         }
                         onEdit={() => onEdit(index)}
                         onDiscountChange={(discount) => {

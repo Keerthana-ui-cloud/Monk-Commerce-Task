@@ -61,7 +61,7 @@ export default function ProductPicker({ isOpen, onClose, onSelect }) {
     };
 
     fetchProducts();
-  }, [search, page, isOpen]);
+  }, [search, page, isOpen,hasMore]);
 
   // Infinite Scroll
   useEffect(() => {
